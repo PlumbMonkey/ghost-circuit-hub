@@ -12,8 +12,8 @@ const TEAL   = "#45DEDE";
 const BG     = "#0D0D0D";
 const CARD   = "#1A1A1A";
 const CARD2  = "#232323";
-const DIM    = "#AAAAAA";
-const WHITE  = "#FFFFFF";
+const DIM    = "#C8C8C8";
+const WHITE  = "#F4F4FF";
 const GREEN  = "#5DD88A";
 const RED    = "#F06A6A";
 const ORANGE = "#F09850";
@@ -97,7 +97,7 @@ function initWeek(reformat = false) {
 // ── Presentational sub-components ────────────────────────────────────────────
 function Tag({ label, color }) {
   return (
-    <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 0.8, color,
+    <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: 0.8, color,
       border: `1px solid ${color}`, padding: "2px 7px", borderRadius: 3,
       marginRight: 8, flexShrink: 0 }}>{label}</span>
   );
@@ -116,7 +116,7 @@ function CheckRow({ task, checked, onToggle, skipped }) {
         border: off ? `2px solid ${DIM}` : checked === true ? `2px solid ${GREEN}` : `2px solid ${DIM}`,
         background: off ? "#333333" : checked === true ? GREEN : "transparent",
         display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}>
-        {off && <span style={{ color: DIM, fontSize: 12 }}>—</span>}
+        {off && <span style={{ color: DIM, fontSize: 14 }}>—</span>}
         {!off && checked === true && <span style={{ color: "#000", fontSize: 14, fontWeight: 900 }}>✓</span>}
       </div>
       <Tag label={task.tag || task.freq} color={task.color} />
@@ -241,20 +241,20 @@ export default function ConductorScheduler() {
         display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
           <div style={{ fontSize: 26, fontWeight: 900, color: GOLD, letterSpacing: 3 }}>CONDUCTOR</div>
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 2, marginTop: 2 }}>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 2, marginTop: 2 }}>
             PLUMBMONKEY MEDIA — PRODUCTION TRACKER
           </div>
         </div>
         <div style={{ textAlign: "right", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 5 }}>
           {isReformat && (
-            <div style={{ fontSize: 12, color: ORANGE, fontWeight: 700,
+            <div style={{ fontSize: 14, color: ORANGE, fontWeight: 700,
               border: `1px solid ${ORANGE}`, padding: "3px 10px", borderRadius: 4 }}>
               ⚠ HDD REFORMAT WEEK — MON/TUE OFFLINE
             </div>
           )}
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <SyncBadge status={syncStatus} />
-            <span style={{ fontSize: 12, color: DIM }}>{weekKey}</span>
+            <span style={{ fontSize: 14, color: DIM }}>{weekKey}</span>
           </div>
           <div style={{ fontSize: 15, color: GREEN, fontWeight: 700 }}>{wDon}/{wTot} tasks</div>
           <AuthButton user={user} style={{ marginTop: 2 }} />
@@ -264,8 +264,8 @@ export default function ConductorScheduler() {
       {/* ── WEEK PROGRESS BAR ── */}
       <div style={{ padding: "12px 22px", background: CARD2, borderBottom: "1px solid #2C2C2C" }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-          <span style={{ fontSize: 12, color: DIM, letterSpacing: 1 }}>WEEK PROGRESS</span>
-          <span style={{ fontSize: 12, color: GOLD }}>{Math.round(wDon / wTot * 100)}%</span>
+          <span style={{ fontSize: 14, color: DIM, letterSpacing: 1 }}>WEEK PROGRESS</span>
+          <span style={{ fontSize: 14, color: GOLD }}>{Math.round(wDon / wTot * 100)}%</span>
         </div>
         <Bar value={wDon} max={wTot} color={GOLD} />
       </div>
@@ -275,7 +275,7 @@ export default function ConductorScheduler() {
         {T("checklist", "DAILY")}{T("weekly", "WEEKLY")}{T("meals", "MEALS")}
         {T("videos", "VIDEOS")}{T("stats", "STATS")}
         <button onClick={archive} style={{ marginLeft: "auto", marginRight: 12, padding: "8px 14px",
-          fontSize: 12, fontWeight: 700, background: "transparent", border: `1px solid ${DIM}`,
+          fontSize: 14, fontWeight: 700, background: "transparent", border: `1px solid ${DIM}`,
           color: DIM, borderRadius: 4, cursor: "pointer", fontFamily: "inherit", letterSpacing: 1 }}>
           ARCHIVE + NEW WEEK
         </button>
@@ -298,7 +298,7 @@ export default function ConductorScheduler() {
                   fontWeight: 700, fontSize: 13, letterSpacing: 1,
                 }}>
                   <div>{d}</div>
-                  <div style={{ fontSize: 12, marginTop: 3, color: isAct ? "#222" : isOff ? ORANGE : DIM }}>
+                  <div style={{ fontSize: 14, marginTop: 3, color: isAct ? "#222" : isOff ? ORANGE : DIM }}>
                     {isOff ? "OFF" : `${done}/${active}`}
                   </div>
                 </button>
@@ -327,8 +327,8 @@ export default function ConductorScheduler() {
           ) : (
             <div style={{ marginBottom: 12 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                <span style={{ fontSize: 12, color: DIM }}>{activeDay} PROGRESS</span>
-                <span style={{ fontSize: 12, color: TEAL }}>{dDone}/{dActive}</span>
+                <span style={{ fontSize: 14, color: DIM }}>{activeDay} PROGRESS</span>
+                <span style={{ fontSize: 14, color: TEAL }}>{dDone}/{dActive}</span>
               </div>
               <Bar value={dDone} max={dActive} color={TEAL} />
             </div>
@@ -345,7 +345,7 @@ export default function ConductorScheduler() {
           {!offDay && MEAL_SCHEDULE[activeDay] && (
             <div style={{ background: "#110A00", border: `1px solid ${ORANGE}44`,
               borderRadius: 8, padding: "14px 18px", marginBottom: 12 }}>
-              <div style={{ fontSize: 12, color: ORANGE, fontWeight: 700, letterSpacing: 1, marginBottom: 9 }}>
+              <div style={{ fontSize: 14, color: ORANGE, fontWeight: 700, letterSpacing: 1, marginBottom: 9 }}>
                 🍽 MEAL REMINDERS — {MEAL_SCHEDULE[activeDay].meals}× TODAY
               </div>
               {MEAL_SCHEDULE[activeDay].times.map((t, i) => (
@@ -360,7 +360,7 @@ export default function ConductorScheduler() {
             </div>
           )}
 
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 7 }}>DAILY NOTES</div>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 7 }}>DAILY NOTES</div>
           <textarea value={notes} onChange={e => setNotes(e.target.value)}
             placeholder="Blockers, wins, what to adjust tomorrow..."
             style={{ width: "100%", minHeight: 80, background: CARD2, border: "1px solid #333333",
@@ -374,8 +374,8 @@ export default function ConductorScheduler() {
         <div style={{ padding: "14px 18px" }}>
           <div style={{ marginBottom: 12 }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-              <span style={{ fontSize: 12, color: DIM }}>WEEKLY TASKS</span>
-              <span style={{ fontSize: 12, color: GREEN }}>{wklyDone}/{WEEKLY_TASKS.length}</span>
+              <span style={{ fontSize: 14, color: DIM }}>WEEKLY TASKS</span>
+              <span style={{ fontSize: 14, color: GREEN }}>{wklyDone}/{WEEKLY_TASKS.length}</span>
             </div>
             <Bar value={wklyDone} max={WEEKLY_TASKS.length} color={GREEN} />
           </div>
@@ -394,7 +394,7 @@ export default function ConductorScheduler() {
               Log what was done in Daily Notes to build a repair history over time.
             </div>
           </div>
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 9 }}>ACTIVE COURSES</div>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 9 }}>ACTIVE COURSES</div>
           <div style={{ background: CARD, borderRadius: 8, overflow: "hidden", border: "1px solid #2C2C2C" }}>
             {[
               { label: "Blender Architecture Course",        pct: 32,   color: GOLD },
@@ -408,7 +408,7 @@ export default function ConductorScheduler() {
                 <span style={{ flex: 1, fontSize: 15, color: WHITE }}>{c.label}</span>
                 {c.pct !== null
                   ? <div style={{ width: 110 }}>
-                      <div style={{ fontSize: 12, color: c.color, textAlign: "right", marginBottom: 3 }}>{c.pct}%</div>
+                      <div style={{ fontSize: 14, color: c.color, textAlign: "right", marginBottom: 3 }}>{c.pct}%</div>
                       <Bar value={c.pct} max={100} color={c.color} />
                     </div>
                   : <span style={{ fontSize: 13, color: DIM }}>Ongoing</span>
@@ -422,7 +422,7 @@ export default function ConductorScheduler() {
       {/* ── MEALS ── */}
       {tab === "meals" && (
         <div style={{ padding: "14px 18px" }}>
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 6 }}>WEEKLY MEAL PLAN</div>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 6 }}>WEEKLY MEAL PLAN</div>
           <div style={{ fontSize: 14, color: DIM, marginBottom: 14, lineHeight: 1.7 }}>
             3-meal days: Mon / Wed / Fri &nbsp;·&nbsp; 2-meal days: Tue / Thu / Sat<br />
             Edit any field. Resets when you archive the week.
@@ -434,7 +434,7 @@ export default function ConductorScheduler() {
               <div key={d} style={{ marginBottom: 14, opacity: isOff ? 0.3 : 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
                   <span style={{ fontSize: 15, fontWeight: 700, color: GOLD, minWidth: 36 }}>{d}</span>
-                  <span style={{ fontSize: 12, color: isOff ? ORANGE : DIM }}>
+                  <span style={{ fontSize: 14, color: isOff ? ORANGE : DIM }}>
                     {isOff ? "OFFLINE" : `${sched.meals} meals`}
                   </span>
                   <div style={{ flex: 1, height: 1, background: "#1E1E1E" }} />
@@ -466,7 +466,7 @@ export default function ConductorScheduler() {
       {/* ── VIDEOS ── */}
       {tab === "videos" && (
         <div style={{ padding: "14px 18px" }}>
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 12 }}>WEEKLY RELEASE CALENDAR</div>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 12 }}>WEEKLY RELEASE CALENDAR</div>
           <div style={{ background: CARD, borderRadius: 8, overflow: "hidden",
             border: "1px solid #2C2C2C", marginBottom: 14 }}>
             {VIDEO_SCHEDULE.map((row, i) => (
@@ -475,14 +475,14 @@ export default function ConductorScheduler() {
                 background: i % 2 === 0 ? CARD : CARD2 }}>
                 <span style={{ fontSize: 15, fontWeight: 700, color: GOLD }}>{row.day}</span>
                 <div>
-                  <div style={{ fontSize: 11, color: DIM, marginBottom: 3 }}>VIDEO</div>
+                  <div style={{ fontSize: 13, color: DIM, marginBottom: 3 }}>VIDEO</div>
                   <div style={{ fontSize: 14, color: row.video === "No upload" ? DIM : WHITE }}>{row.video}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 11, color: DIM, marginBottom: 3 }}>SHORT</div>
+                  <div style={{ fontSize: 13, color: DIM, marginBottom: 3 }}>SHORT</div>
                   <div style={{ fontSize: 14, color: row.short === "—" ? DIM : TEAL }}>{row.short}</div>
                 </div>
-                <span style={{ fontSize: 12, color: DIM, textAlign: "right" }}>{row.note}</span>
+                <span style={{ fontSize: 14, color: DIM, textAlign: "right" }}>{row.note}</span>
               </div>
             ))}
           </div>
@@ -508,15 +508,15 @@ export default function ConductorScheduler() {
               { l: "WEEKLY TASKS", v: wklyDone, t: WEEKLY_TASKS.length,  color: GREEN },
             ].map((s, i) => (
               <div key={i} style={{ background: CARD, borderRadius: 8, padding: 16, border: "1px solid #2C2C2C" }}>
-                <div style={{ fontSize: 12, color: DIM, marginBottom: 6 }}>{s.l}</div>
+                <div style={{ fontSize: 14, color: DIM, marginBottom: 6 }}>{s.l}</div>
                 <div style={{ fontSize: 30, fontWeight: 900, color: s.color }}>{s.v}</div>
-                <div style={{ fontSize: 12, color: DIM, marginBottom: 7 }}>of {s.t}</div>
+                <div style={{ fontSize: 14, color: DIM, marginBottom: 7 }}>of {s.t}</div>
                 <Bar value={s.v} max={s.t} color={s.color} />
               </div>
             ))}
           </div>
 
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 8 }}>DAILY BREAKDOWN</div>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 8 }}>DAILY BREAKDOWN</div>
           <div style={{ background: CARD, borderRadius: 8, overflow: "hidden",
             border: "1px solid #2C2C2C", marginBottom: 14 }}>
             {DAYS.map((d, i) => {
@@ -542,7 +542,7 @@ export default function ConductorScheduler() {
             })}
           </div>
 
-          <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 8 }}>BUILD PATHS</div>
+          <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 8 }}>BUILD PATHS</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 14 }}>
             {[
               { l: "PATH 3 — QuickAlign", s: "SPRINT START", c: GREEN },
@@ -553,14 +553,14 @@ export default function ConductorScheduler() {
                 border: `1px solid ${p.c}44`, background: CARD,
                 display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontSize: 15, color: WHITE }}>{p.l}</span>
-                <span style={{ fontSize: 12, color: p.c, fontWeight: 700 }}>{p.s}</span>
+                <span style={{ fontSize: 14, color: p.c, fontWeight: 700 }}>{p.s}</span>
               </div>
             ))}
           </div>
 
           {Object.keys(history).length > 0 && (
             <>
-              <div style={{ fontSize: 12, color: DIM, letterSpacing: 1, marginBottom: 8 }}>ARCHIVED WEEKS</div>
+              <div style={{ fontSize: 14, color: DIM, letterSpacing: 1, marginBottom: 8 }}>ARCHIVED WEEKS</div>
               <div style={{ background: CARD, borderRadius: 8, overflow: "hidden", border: "1px solid #2C2C2C" }}>
                 {Object.entries(history).reverse().map(([wk, data]) => (
                   <div key={wk} style={{ display: "flex", alignItems: "center", gap: 10,
@@ -578,7 +578,7 @@ export default function ConductorScheduler() {
       )}
 
       <div style={{ padding: "10px 22px", borderTop: "1px solid #2C2C2C", marginTop: 8,
-        fontSize: 11, color: "#666666", display: "flex", justifyContent: "space-between" }}>
+        fontSize: 13, color: "#666666", display: "flex", justifyContent: "space-between" }}>
         <span>CONDUCTOR SCHEDULER v2.0 — PLUMBMONKEY MEDIA</span>
         <span>Sunday = REST DAY</span>
       </div>

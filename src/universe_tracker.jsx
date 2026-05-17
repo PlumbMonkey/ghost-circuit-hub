@@ -15,7 +15,7 @@ const C = {
   card:   "#13131F",
   card2:  "#191928",
   border: "#1E1E32",
-  gold:   "#C9A84C",
+  gold:   "#E0BA52",
   teal:   "#2ECFCF",
   green:  "#4CAF6E",
   red:    "#CF4C4C",
@@ -24,9 +24,9 @@ const C = {
   pink:   "#E06BAA",
   blue:   "#4A9FE8",
   jade:   "#00C896",
-  dim:    "#44445A",
-  mid:    "#66667A",
-  white:  "#EEEEF8",
+  dim:    "#8080A4",
+  mid:    "#A0A0C0",
+  white:  "#F4F4FF",
 };
 
 // ── Project Universe Definition ────────────────────────────────────────────
@@ -284,7 +284,7 @@ function HanziFlowPanel() {
     <input type="number" min={0} max={max} value={val}
       onChange={e => setter(Number(e.target.value))}
       style={{ width: 58, background: C.card2, border: `1px solid ${C.border}`, borderRadius: 4,
-        color: C.white, fontFamily: "'Courier New', monospace", fontSize: 11,
+        color: C.white, fontFamily: "'Courier New', monospace", fontSize: 13,
         padding: "4px 6px", textAlign: "center" }} />
   );
 
@@ -294,11 +294,11 @@ function HanziFlowPanel() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
         <div>
           <div style={{ fontSize: 22, fontWeight: 900, color: C.jade, letterSpacing: 2 }}>汉字FLOW</div>
-          <div style={{ fontSize: 8, color: C.dim, letterSpacing: 2 }}>MANDARIN STUDY TRACKER — HANZIFLOW PRD</div>
+          <div style={{ fontSize: 13, color: C.dim, letterSpacing: 2 }}>MANDARIN STUDY TRACKER — HANZIFLOW PRD</div>
         </div>
         <div style={{ textAlign: "right" }}>
           <SyncBadge status={user ? "live" : "local"} style={{ marginBottom: 6 }} />
-          <div style={{ fontSize: 11, color: C.jade, fontStyle: "italic" }}>{HF_IDIOMS[idiomIdx]}</div>
+          <div style={{ fontSize: 13, color: C.jade, fontStyle: "italic" }}>{HF_IDIOMS[idiomIdx]}</div>
         </div>
       </div>
 
@@ -312,9 +312,9 @@ function HanziFlowPanel() {
         ].map(s => (
           <div key={s.label} style={{ background: C.card, borderRadius: 8, padding: "10px 12px",
             border: `1px solid ${s.col}33`, textAlign: "center" }}>
-            <div style={{ fontSize: 8, color: C.dim, letterSpacing: 1 }}>{s.label}</div>
+            <div style={{ fontSize: 13, color: C.dim, letterSpacing: 1 }}>{s.label}</div>
             <div style={{ fontSize: 22, fontWeight: 900, color: s.col, lineHeight: 1.2 }}>{s.val}</div>
-            <div style={{ fontSize: 8, color: C.mid }}>{s.sub}</div>
+            <div style={{ fontSize: 13, color: C.mid }}>{s.sub}</div>
           </div>
         ))}
       </div>
@@ -322,13 +322,13 @@ function HanziFlowPanel() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
         {/* ─ Log Session ─ */}
         <div style={{ background: C.card, borderRadius: 8, padding: 14, border: `1px solid ${C.jade}33` }}>
-          <div style={{ fontSize: 9, color: C.jade, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>+ LOG SESSION</div>
+          <div style={{ fontSize: 14, color: C.jade, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>+ LOG SESSION</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, marginBottom: 10 }}>
             <div>
-              <div style={{ fontSize: 8, color: C.dim, marginBottom: 3 }}>DATE</div>
+              <div style={{ fontSize: 13, color: C.dim, marginBottom: 3 }}>DATE</div>
               <input type="date" value={logDate} onChange={e => setLogDate(e.target.value)}
                 style={{ width: "100%", background: C.card2, border: `1px solid ${C.border}`,
-                  borderRadius: 4, color: C.white, fontFamily: "inherit", fontSize: 9,
+                  borderRadius: 4, color: C.white, fontFamily: "inherit", fontSize: 14,
                   padding: "4px 6px", colorScheme: "dark" }} />
             </div>
             {[
@@ -339,7 +339,7 @@ function HanziFlowPanel() {
               { label: "STASH ✗",   val: logStash,  set: setLogStash,  max: 100 },
             ].map(f => (
               <div key={f.label}>
-                <div style={{ fontSize: 8, color: C.dim, marginBottom: 3 }}>{f.label}</div>
+                <div style={{ fontSize: 13, color: C.dim, marginBottom: 3 }}>{f.label}</div>
                 {numInput(f.val, f.set, f.max)}
               </div>
             ))}
@@ -347,18 +347,18 @@ function HanziFlowPanel() {
           <button onClick={logSession}
             style={{ width: "100%", padding: "8px 0", background: C.jade + "22",
               border: `1px solid ${C.jade}`, color: C.jade, fontFamily: "inherit",
-              fontSize: 9, fontWeight: 700, letterSpacing: 1, borderRadius: 4, cursor: "pointer" }}>
+              fontSize: 14, fontWeight: 700, letterSpacing: 1, borderRadius: 4, cursor: "pointer" }}>
             RECORD SESSION
           </button>
         </div>
 
         {/* ─ Recent Sessions ─ */}
         <div style={{ background: C.card, borderRadius: 8, padding: 14, border: `1px solid ${C.border}` }}>
-          <div style={{ fontSize: 9, color: C.dim, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>
+          <div style={{ fontSize: 14, color: C.dim, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>
             RECENT SESSIONS
           </div>
           {sessions.length === 0 ? (
-            <div style={{ fontSize: 10, color: C.dim, textAlign: "center", paddingTop: 30, lineHeight: 1.8 }}>
+            <div style={{ fontSize: 13, color: C.dim, textAlign: "center", paddingTop: 30, lineHeight: 1.8 }}>
               No sessions logged yet.<br/>Record your first study block →
             </div>
           ) : (
@@ -369,11 +369,11 @@ function HanziFlowPanel() {
                   <div key={s.id || i} style={{ background: C.card2, borderRadius: 5, padding: "6px 10px",
                     border: `1px solid ${C.border}` }}>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 9, color: C.mid }}>{s.date}</span>
-                      <span style={{ fontSize: 9, color: C.dim }}>{s.duration}min</span>
-                      <span style={{ fontSize: 9, fontWeight: 700, color: sc }}>{s.accuracy}%</span>
+                      <span style={{ fontSize: 14, color: C.mid }}>{s.date}</span>
+                      <span style={{ fontSize: 14, color: C.dim }}>{s.duration}min</span>
+                      <span style={{ fontSize: 14, fontWeight: 700, color: sc }}>{s.accuracy}%</span>
                     </div>
-                    <div style={{ fontSize: 8, color: C.dim, marginTop: 2 }}>
+                    <div style={{ fontSize: 13, color: C.dim, marginTop: 2 }}>
                       {s.cardsNew}N + {s.cardsReview}R &nbsp;·&nbsp; stash: {s.stashSize ?? 0}
                     </div>
                   </div>
@@ -386,7 +386,7 @@ function HanziFlowPanel() {
 
       {/* ─ HSK Vocabulary Mastery ─ */}
       <div style={{ background: C.card, borderRadius: 8, padding: 14, border: `1px solid ${C.jade}22`, marginBottom: 12 }}>
-        <div style={{ fontSize: 9, color: C.jade, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>
+        <div style={{ fontSize: 14, color: C.jade, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>
           HSK VOCABULARY MASTERY
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gap: 8 }}>
@@ -397,13 +397,13 @@ function HanziFlowPanel() {
             const lvlColor = [C.green, C.teal, C.blue, C.purple, C.orange, C.red][lvl - 1];
             return (
               <div key={lvl} style={{ textAlign: "center" }}>
-                <div style={{ fontSize: 8, color: lvlColor, fontWeight: 700, marginBottom: 4 }}>HSK {lvl}</div>
+                <div style={{ fontSize: 13, color: lvlColor, fontWeight: 700, marginBottom: 4 }}>HSK {lvl}</div>
                 <RadialProgress pct={pct} color={lvlColor} size={52} />
-                <div style={{ fontSize: 8, color: C.dim, marginTop: 4 }}>{mastered}/{total}</div>
+                <div style={{ fontSize: 13, color: C.dim, marginTop: 4 }}>{mastered}/{total}</div>
                 <input type="number" min={0} max={total} value={mastered}
                   onChange={e => updateHsk(lvl, Number(e.target.value))}
                   style={{ width: "100%", marginTop: 4, background: C.card2, border: `1px solid ${C.border}`,
-                    borderRadius: 3, color: lvlColor, fontFamily: "inherit", fontSize: 9,
+                    borderRadius: 3, color: lvlColor, fontFamily: "inherit", fontSize: 14,
                     padding: "2px 4px", textAlign: "center" }} />
               </div>
             );
@@ -413,7 +413,7 @@ function HanziFlowPanel() {
 
       {/* ─ HanziFlow Dev Phases ─ */}
       <div style={{ background: C.card, borderRadius: 8, padding: 14, border: `1px solid ${C.border}` }}>
-        <div style={{ fontSize: 9, color: C.dim, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>
+        <div style={{ fontSize: 14, color: C.dim, fontWeight: 700, marginBottom: 10, letterSpacing: 1 }}>
           HANZIFLOW APP — DEVELOPMENT PHASES
         </div>
         {HF_PHASES.map(ph => {
@@ -422,12 +422,12 @@ function HanziFlowPanel() {
           return (
             <div key={ph.id} style={{ marginBottom: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 5 }}>
-                <span style={{ fontSize: 10, color: ph.color, fontWeight: 700 }}>{ph.label}</span>
-                <span style={{ fontSize: 9, color: ph.color }}>{pct}%</span>
+                <span style={{ fontSize: 13, color: ph.color, fontWeight: 700 }}>{ph.label}</span>
+                <span style={{ fontSize: 14, color: ph.color }}>{pct}%</span>
               </div>
               <MilestoneBar milestones={ph.milestones} current={ms} color={ph.color}
                 onSet={v => updatePhase(ph.id, v)} />
-              <div style={{ fontSize: 8, color: C.dim, marginTop: 3 }}>
+              <div style={{ fontSize: 13, color: C.dim, marginTop: 3 }}>
                 {ms > 0 ? ph.milestones[Math.min(ms - 1, ph.milestones.length - 1)] : "Not started"}
                 &nbsp;·&nbsp; {ms}/{ph.milestones.length}
               </div>
@@ -504,7 +504,7 @@ function RadialProgress({ pct, color, size = 64, label }) {
       <div style={{ marginTop: -size - 4, height: size, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <span style={{ fontSize: 13, fontWeight: 900, color, fontFamily: "'Courier New', monospace" }}>{pct}%</span>
       </div>
-      {label && <div style={{ fontSize: 8, color: C.dim, letterSpacing: 1, textAlign: "center", maxWidth: size + 20 }}>{label}</div>}
+      {label && <div style={{ fontSize: 13, color: C.dim, letterSpacing: 1, textAlign: "center", maxWidth: size + 20 }}>{label}</div>}
     </div>
   );
 }
@@ -549,10 +549,10 @@ function ProjectCard({ proj, pillarColor, progress, onUpdate, weekHistory }) {
         display: "flex", alignItems: "center", gap: 10,
       }}>
         <div style={{ width: 8, height: 8, borderRadius: "50%", background: proj.color, flexShrink: 0 }} />
-        <span style={{ flex: 1, fontSize: 11, color: C.white, fontWeight: 600 }}>{proj.label}</span>
+        <span style={{ flex: 1, fontSize: 13, color: C.white, fontWeight: 600 }}>{proj.label}</span>
         <SparkLine data={weekHistory} color={proj.color} width={60} height={20} />
-        <span style={{ fontSize: 10, color: proj.color, minWidth: 32, textAlign: "right", fontWeight: 700 }}>{pct}%</span>
-        <span style={{ fontSize: 10, color: C.dim, marginLeft: 4 }}>{expanded ? "▲" : "▼"}</span>
+        <span style={{ fontSize: 13, color: proj.color, minWidth: 32, textAlign: "right", fontWeight: 700 }}>{pct}%</span>
+        <span style={{ fontSize: 13, color: C.dim, marginLeft: 4 }}>{expanded ? "▲" : "▼"}</span>
       </div>
       <div style={{ padding: "0 14px 4px", marginTop: -4 }}>
         <MilestoneBar milestones={proj.milestones} current={prog.milestone} color={proj.color}
@@ -560,14 +560,14 @@ function ProjectCard({ proj, pillarColor, progress, onUpdate, weekHistory }) {
       </div>
       {expanded && (
         <div style={{ padding: "10px 14px 14px", borderTop: `1px solid ${C.border}` }}>
-          <div style={{ fontSize: 9, color: proj.color, marginBottom: 8, fontWeight: 700 }}>
+          <div style={{ fontSize: 14, color: proj.color, marginBottom: 8, fontWeight: 700 }}>
             CURRENT: {currentLabel} &nbsp;·&nbsp; {prog.milestone}/{proj.milestones.length} milestones
           </div>
           <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 10 }}>
             {proj.milestones.map((m, i) => (
               <span key={i} onClick={() => onUpdate(proj.id, { ...prog, milestone: i + 1, lastUpdated: new Date().toISOString() })}
                 style={{
-                  fontSize: 9, padding: "3px 8px", borderRadius: 4, cursor: "pointer",
+                  fontSize: 14, padding: "3px 8px", borderRadius: 4, cursor: "pointer",
                   background: i < prog.milestone ? proj.color + "33" : C.card2,
                   color: i < prog.milestone ? proj.color : C.dim,
                   border: i === prog.milestone - 1 ? `1px solid ${proj.color}` : `1px solid ${C.border}`,
@@ -575,11 +575,11 @@ function ProjectCard({ proj, pillarColor, progress, onUpdate, weekHistory }) {
                 }}>{m}</span>
             ))}
           </div>
-          <div style={{ fontSize: 9, color: C.dim, marginBottom: 6, fontStyle: "italic" }}>{proj.note}</div>
+          <div style={{ fontSize: 14, color: C.dim, marginBottom: 6, fontStyle: "italic" }}>{proj.note}</div>
           <textarea value={prog.notes || ""} placeholder="Notes, blockers, next actions..."
             onChange={e => onUpdate(proj.id, { ...prog, notes: e.target.value })}
             style={{ width: "100%", minHeight: 48, background: C.card2, border: `1px solid ${C.border}`,
-              borderRadius: 5, color: C.white, fontFamily: "'Courier New', monospace", fontSize: 10,
+              borderRadius: 5, color: C.white, fontFamily: "'Courier New', monospace", fontSize: 13,
               padding: 8, resize: "vertical", boxSizing: "border-box" }} />
         </div>
       )}
@@ -673,7 +673,7 @@ export default function UniverseTracker() {
 
   const TAB = (id, lbl) => (
     <button key={id} onClick={() => setTab(id)} style={{
-      padding: "8px 14px", fontSize: 10, fontWeight: 700, letterSpacing: 1,
+      padding: "8px 14px", fontSize: 13, fontWeight: 700, letterSpacing: 1,
       cursor: "pointer", border: "none", background: "transparent", fontFamily: "inherit",
       color: tab === id ? C.gold : C.dim,
       borderBottom: tab === id ? `2px solid ${C.gold}` : "2px solid transparent",
@@ -689,13 +689,13 @@ export default function UniverseTracker() {
       <div style={{ background: C.panel, borderBottom: `3px solid ${C.gold}`,
         padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
-          <div style={{ fontSize: 9, color: C.dim, letterSpacing: 3, marginBottom: 2 }}>PLUMBMONKEY MEDIA</div>
+          <div style={{ fontSize: 14, color: C.dim, letterSpacing: 3, marginBottom: 2 }}>PLUMBMONKEY MEDIA</div>
           <div style={{ fontSize: 22, fontWeight: 900, color: C.gold, letterSpacing: 2 }}>GHOST CIRCUIT</div>
-          <div style={{ fontSize: 9, color: C.teal, letterSpacing: 2 }}>UNIVERSE TRACKER</div>
+          <div style={{ fontSize: 14, color: C.teal, letterSpacing: 2 }}>UNIVERSE TRACKER</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
           <RadialProgress pct={upct} color={C.gold} size={60} />
-          <div style={{ fontSize: 8, color: C.dim }}>{weekKey}</div>
+          <div style={{ fontSize: 13, color: C.dim }}>{weekKey}</div>
           <AuthButton user={user} style={{ marginTop: 4 }} />
         </div>
       </div>
@@ -710,7 +710,7 @@ export default function UniverseTracker() {
         {TAB("hanziflow","汉字FLOW")}
         <button onClick={snapshotWeek} style={{
           marginLeft: "auto", marginRight: 14, padding: "5px 12px",
-          fontSize: 8, fontWeight: 700, background: "transparent",
+          fontSize: 13, fontWeight: 700, background: "transparent",
           border: `1px solid ${C.teal}`, color: C.teal,
           borderRadius: 4, cursor: "pointer", fontFamily: "inherit", letterSpacing: 1,
         }}>📸 SNAPSHOT WEEK</button>
@@ -719,7 +719,7 @@ export default function UniverseTracker() {
       {/* ══ OVERVIEW ══════════════════════════════════════════════════════ */}
       {tab === "overview" && (
         <div style={{ padding: "16px 20px" }}>
-          <div style={{ fontSize: 9, color: C.dim, letterSpacing: 2, marginBottom: 12 }}>ALL PILLARS — CURRENT STATUS</div>
+          <div style={{ fontSize: 14, color: C.dim, letterSpacing: 2, marginBottom: 12 }}>ALL PILLARS — CURRENT STATUS</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 20 }}>
             {PILLARS.map(pi => {
               const pct = pillarPct(pi);
@@ -736,14 +736,14 @@ export default function UniverseTracker() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
                     <div>
                       <div style={{ fontSize: 16 }}>{pi.icon}</div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: pi.color, marginTop: 4, letterSpacing: 1 }}>{pi.label}</div>
-                      <div style={{ fontSize: 8, color: C.dim, marginTop: 2 }}>{pi.phase}</div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: pi.color, marginTop: 4, letterSpacing: 1 }}>{pi.label}</div>
+                      <div style={{ fontSize: 13, color: C.dim, marginTop: 2 }}>{pi.phase}</div>
                     </div>
                     <RadialProgress pct={pct} color={pi.color} size={48} />
                   </div>
-                  <div style={{ fontSize: 9, color: C.mid, marginBottom: 8, lineHeight: 1.5 }}>{pi.desc}</div>
+                  <div style={{ fontSize: 14, color: C.mid, marginBottom: 8, lineHeight: 1.5 }}>{pi.desc}</div>
                   <SparkLine data={hist} color={pi.color} width="100%" height={28} />
-                  <div style={{ fontSize: 8, color: C.dim, marginTop: 6 }}>
+                  <div style={{ fontSize: 13, color: C.dim, marginTop: 6 }}>
                     {pi.projects.length} projects &nbsp;·&nbsp; click to expand
                   </div>
                 </div>
@@ -752,14 +752,14 @@ export default function UniverseTracker() {
           </div>
 
           {/* Pipeline phase strip */}
-          <div style={{ fontSize: 9, color: C.dim, letterSpacing: 2, marginBottom: 8 }}>RELEASE PIPELINE</div>
+          <div style={{ fontSize: 14, color: C.dim, letterSpacing: 2, marginBottom: 8 }}>RELEASE PIPELINE</div>
           <div style={{ display: "flex", gap: 0, borderRadius: 8, overflow: "hidden", border: `1px solid ${C.border}` }}>
             {PIPELINE_PHASES.map((ph, i) => (
               <div key={ph.id} style={{ flex: 1, padding: "10px 8px", background: C.card,
                 borderRight: i < PIPELINE_PHASES.length-1 ? `1px solid ${C.border}` : "none",
                 textAlign: "center" }}>
-                <div style={{ fontSize: 8, fontWeight: 700, color: ph.color, letterSpacing: 1 }}>{ph.label}</div>
-                <div style={{ fontSize: 8, color: C.dim, marginTop: 4, lineHeight: 1.4 }}>{ph.desc}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: ph.color, letterSpacing: 1 }}>{ph.label}</div>
+                <div style={{ fontSize: 13, color: C.dim, marginTop: 4, lineHeight: 1.4 }}>{ph.desc}</div>
                 <div style={{ marginTop: 6, height: 3, borderRadius: 2, background: ph.color + "44" }}>
                   <div style={{ height: "100%", width: ph.id === "now" ? "30%" : ph.id === "ongoing" ? "10%" : "0%",
                     background: ph.color, borderRadius: 2, transition: "width 0.5s" }} />
@@ -771,39 +771,39 @@ export default function UniverseTracker() {
           {/* Quick status — primary goals */}
           <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             <div style={{ background: C.card, borderRadius: 8, padding: 14, border: `1px solid ${C.gold}44` }}>
-              <div style={{ fontSize: 9, color: C.gold, fontWeight: 700, marginBottom: 8 }}>🎵 PRIMARY — THE ALBUM</div>
+              <div style={{ fontSize: 14, color: C.gold, fontWeight: 700, marginBottom: 8 }}>🎵 PRIMARY — THE ALBUM</div>
               {PILLARS[0].projects.slice(0,2).map(pr => {
                 const prog = progress[pr.id] || { milestone: 0 };
                 const pct = Math.round((prog.milestone / pr.milestones.length) * 100);
                 return (
                   <div key={pr.id} style={{ marginBottom: 8 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-                      <span style={{ fontSize: 10, color: C.white }}>{pr.label}</span>
-                      <span style={{ fontSize: 9, color: C.gold }}>{pct}%</span>
+                      <span style={{ fontSize: 13, color: C.white }}>{pr.label}</span>
+                      <span style={{ fontSize: 14, color: C.gold }}>{pct}%</span>
                     </div>
                     <div style={{ height: 3, background: C.border, borderRadius: 2 }}>
                       <div style={{ height: "100%", width: `${pct}%`, background: C.gold, borderRadius: 2 }} />
                     </div>
-                    <div style={{ fontSize: 8, color: C.dim, marginTop: 2 }}>{pr.note}</div>
+                    <div style={{ fontSize: 13, color: C.dim, marginTop: 2 }}>{pr.note}</div>
                   </div>
                 );
               })}
             </div>
             <div style={{ background: C.card, borderRadius: 8, padding: 14, border: `1px solid ${C.teal}44` }}>
-              <div style={{ fontSize: 9, color: C.teal, fontWeight: 700, marginBottom: 8 }}>⚙ SECONDARY — APPS TO MARKET</div>
+              <div style={{ fontSize: 14, color: C.teal, fontWeight: 700, marginBottom: 8 }}>⚙ SECONDARY — APPS TO MARKET</div>
               {PILLARS[1].projects.slice(0,3).map(pr => {
                 const prog = progress[pr.id] || { milestone: 0 };
                 const pct = Math.round((prog.milestone / pr.milestones.length) * 100);
                 return (
                   <div key={pr.id} style={{ marginBottom: 8 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-                      <span style={{ fontSize: 10, color: C.white }}>{pr.label}</span>
-                      <span style={{ fontSize: 9, color: C.teal }}>{pct}%</span>
+                      <span style={{ fontSize: 13, color: C.white }}>{pr.label}</span>
+                      <span style={{ fontSize: 14, color: C.teal }}>{pct}%</span>
                     </div>
                     <div style={{ height: 3, background: C.border, borderRadius: 2 }}>
                       <div style={{ height: "100%", width: `${pct}%`, background: C.teal, borderRadius: 2 }} />
                     </div>
-                    <div style={{ fontSize: 8, color: C.dim, marginTop: 2 }}>{pr.note}</div>
+                    <div style={{ fontSize: 13, color: C.dim, marginTop: 2 }}>{pr.note}</div>
                   </div>
                 );
               })}
@@ -823,7 +823,7 @@ export default function UniverseTracker() {
                 background: activePillar === pi.id ? pi.color + "22" : C.card,
                 border: `1px solid ${activePillar === pi.id ? pi.color : C.border}`,
                 color: activePillar === pi.id ? pi.color : C.dim,
-                fontSize: 9, fontWeight: 700, letterSpacing: 1,
+                fontSize: 14, fontWeight: 700, letterSpacing: 1,
               }}>{pi.icon} {pi.label}</button>
             ))}
           </div>
@@ -831,7 +831,7 @@ export default function UniverseTracker() {
           {PILLARS.filter(pi => pi.id === activePillar).map(pi => (
             <div key={pi.id}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                <div style={{ fontSize: 9, color: pi.color, fontWeight: 700, letterSpacing: 2 }}>{pi.label}</div>
+                <div style={{ fontSize: 14, color: pi.color, fontWeight: 700, letterSpacing: 2 }}>{pi.label}</div>
                 <div style={{ flex: 1, height: 1, background: C.border }} />
                 <RadialProgress pct={pillarPct(pi)} color={pi.color} size={40} />
               </div>
@@ -849,7 +849,7 @@ export default function UniverseTracker() {
       {/* ══ PIPELINE ══════════════════════════════════════════════════════ */}
       {tab === "pipeline" && (
         <div style={{ padding: "14px 20px" }}>
-          <div style={{ fontSize: 9, color: C.dim, letterSpacing: 2, marginBottom: 14 }}>
+          <div style={{ fontSize: 14, color: C.dim, letterSpacing: 2, marginBottom: 14 }}>
             GHOST CIRCUIT CREATIVE UNIVERSE — RELEASE ORDER
           </div>
           {[
@@ -901,7 +901,7 @@ export default function UniverseTracker() {
             <div key={i} style={{ marginBottom: 16 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                 <div style={{ width: 10, height: 10, borderRadius: "50%", background: ph.color, flexShrink: 0 }} />
-                <div style={{ fontSize: 10, fontWeight: 700, color: ph.color, letterSpacing: 1 }}>{ph.phase}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: ph.color, letterSpacing: 1 }}>{ph.phase}</div>
                 <div style={{ flex: 1, height: 1, background: ph.color + "33" }} />
               </div>
               <div style={{ background: C.card, borderRadius: 8, padding: "10px 14px",
@@ -910,7 +910,7 @@ export default function UniverseTracker() {
                   <div key={j} style={{ display: "flex", alignItems: "center", gap: 8, padding: "4px 0",
                     borderBottom: j < ph.items.length-1 ? `1px solid ${C.border}` : "none" }}>
                     <div style={{ width: 5, height: 5, borderRadius: "50%", background: ph.color + "88", flexShrink: 0 }} />
-                    <span style={{ fontSize: 11, color: C.white }}>{item}</span>
+                    <span style={{ fontSize: 13, color: C.white }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -923,8 +923,8 @@ export default function UniverseTracker() {
       {tab === "weekly" && (
         <div style={{ padding: "14px 20px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-            <div style={{ fontSize: 9, color: C.dim, letterSpacing: 2 }}>WEEKLY PROGRESS — ALL PILLARS</div>
-            <div style={{ fontSize: 9, color: C.teal }}>
+            <div style={{ fontSize: 14, color: C.dim, letterSpacing: 2 }}>WEEKLY PROGRESS — ALL PILLARS</div>
+            <div style={{ fontSize: 14, color: C.teal }}>
               {Object.keys(weekSnaps).length} weeks tracked
             </div>
           </div>
@@ -933,8 +933,8 @@ export default function UniverseTracker() {
             <div style={{ background: C.card, borderRadius: 8, padding: 32, textAlign: "center",
               border: `1px dashed ${C.border}` }}>
               <div style={{ fontSize: 24, marginBottom: 8 }}>📸</div>
-              <div style={{ fontSize: 12, color: C.mid, marginBottom: 6 }}>No weekly snapshots yet</div>
-              <div style={{ fontSize: 10, color: C.dim }}>
+              <div style={{ fontSize: 14, color: C.mid, marginBottom: 6 }}>No weekly snapshots yet</div>
+              <div style={{ fontSize: 13, color: C.dim }}>
                 Click "SNAPSHOT WEEK" at the top right at the end of each week<br/>
                 to start tracking your progress over time.
               </div>
@@ -949,7 +949,7 @@ export default function UniverseTracker() {
                   <div key={pi.id} style={{ background: C.card, borderRadius: 8, padding: "12px 14px",
                     border: `1px solid ${C.border}`, marginBottom: 10 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: pi.color }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: pi.color }}>
                         {pi.icon} {pi.label}
                       </div>
                       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -965,14 +965,14 @@ export default function UniverseTracker() {
                         const prHist = weekHistory(pr.id);
                         return (
                           <div key={pr.id} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <span style={{ fontSize: 9, color: C.mid, minWidth: 160, overflow: "hidden",
+                            <span style={{ fontSize: 14, color: C.mid, minWidth: 160, overflow: "hidden",
                               textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{pr.label}</span>
                             <div style={{ flex: 1, height: 4, background: C.border, borderRadius: 2 }}>
                               <div style={{ height: "100%", width: `${pct}%`, background: pr.color,
                                 borderRadius: 2, transition: "width 0.3s" }} />
                             </div>
                             <SparkLine data={[...prHist, pct]} color={pr.color} width={50} height={16} />
-                            <span style={{ fontSize: 9, color: pr.color, minWidth: 28, textAlign: "right" }}>{pct}%</span>
+                            <span style={{ fontSize: 14, color: pr.color, minWidth: 28, textAlign: "right" }}>{pct}%</span>
                           </div>
                         );
                       })}
@@ -988,12 +988,12 @@ export default function UniverseTracker() {
       {/* ══ MONTHLY ═══════════════════════════════════════════════════════ */}
       {tab === "monthly" && (
         <div style={{ padding: "14px 20px" }}>
-          <div style={{ fontSize: 9, color: C.dim, letterSpacing: 2, marginBottom: 14 }}>MONTHLY ASSESSMENT — {monthKey}</div>
+          <div style={{ fontSize: 14, color: C.dim, letterSpacing: 2, marginBottom: 14 }}>MONTHLY ASSESSMENT — {monthKey}</div>
 
           {/* Current month snapshot */}
           <div style={{ background: C.card, borderRadius: 10, padding: 16,
             border: `1px solid ${C.gold}44`, marginBottom: 16 }}>
-            <div style={{ fontSize: 10, color: C.gold, fontWeight: 700, marginBottom: 12 }}>CURRENT STATE — ALL PILLARS</div>
+            <div style={{ fontSize: 13, color: C.gold, fontWeight: 700, marginBottom: 12 }}>CURRENT STATE — ALL PILLARS</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
               {PILLARS.map(pi => {
                 const pct = pillarPct(pi);
@@ -1007,7 +1007,7 @@ export default function UniverseTracker() {
           </div>
 
           {/* Monthly note */}
-          <div style={{ fontSize: 9, color: C.dim, letterSpacing: 1, marginBottom: 6 }}>
+          <div style={{ fontSize: 14, color: C.dim, letterSpacing: 1, marginBottom: 6 }}>
             MONTHLY ASSESSMENT NOTES — {monthKey}
           </div>
           <textarea
@@ -1015,23 +1015,23 @@ export default function UniverseTracker() {
             onChange={e => setMonthNote(e.target.value)}
             placeholder={`What did we accomplish this month?\nWhat's blocked?\nWhat pivots do we need?\nWhat's the focus for next month?`}
             style={{ width: "100%", minHeight: 100, background: C.card2, border: `1px solid ${C.border}`,
-              borderRadius: 6, color: C.white, fontFamily: "inherit", fontSize: 11,
+              borderRadius: 6, color: C.white, fontFamily: "inherit", fontSize: 13,
               padding: 12, resize: "vertical", boxSizing: "border-box", marginBottom: 8 }} />
           <button onClick={saveMonthNote} style={{
             padding: "7px 18px", background: "transparent", border: `1px solid ${C.gold}`,
-            color: C.gold, fontFamily: "inherit", fontSize: 9, fontWeight: 700,
+            color: C.gold, fontFamily: "inherit", fontSize: 14, fontWeight: 700,
             letterSpacing: 1, borderRadius: 4, cursor: "pointer", marginBottom: 20,
           }}>SAVE ASSESSMENT</button>
 
           {/* Past months */}
           {Object.keys(monthNotes).length > 0 && (
             <>
-              <div style={{ fontSize: 9, color: C.dim, letterSpacing: 1, marginBottom: 8 }}>PAST ASSESSMENTS</div>
+              <div style={{ fontSize: 14, color: C.dim, letterSpacing: 1, marginBottom: 8 }}>PAST ASSESSMENTS</div>
               {Object.entries(monthNotes).reverse().map(([mk, note]) => (
                 <div key={mk} style={{ background: C.card, borderRadius: 8, padding: 12,
                   border: `1px solid ${C.border}`, marginBottom: 8 }}>
-                  <div style={{ fontSize: 9, color: C.teal, fontWeight: 700, marginBottom: 6 }}>{mk}</div>
-                  <div style={{ fontSize: 10, color: C.mid, lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{note}</div>
+                  <div style={{ fontSize: 14, color: C.teal, fontWeight: 700, marginBottom: 6 }}>{mk}</div>
+                  <div style={{ fontSize: 13, color: C.mid, lineHeight: 1.7, whiteSpace: "pre-wrap" }}>{note}</div>
                 </div>
               ))}
             </>
